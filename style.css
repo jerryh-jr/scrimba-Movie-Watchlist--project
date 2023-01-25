@@ -1,1 +1,31 @@
-/*# sourceMappingURL=style.css.map */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d1b2a;
+}
+
+.navigation {
+  width: 50%;
+  height: 20vh;
+  margin: 0 auto;
+  background: #415a77;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation__container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.movie-container {
+  height: 80vh;
+  width: 50%;
+  margin: 0 auto;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

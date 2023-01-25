@@ -6,7 +6,7 @@ const elements = {
     urlPoster: 'http://img.omdbapi.com/?apikey=[apiKey]&'
 }
 
-function movieFetch() {
+async function movieFetch() {
     const { url, urlPoster, movieInputEl } = elements;
     const res = await fetch(`${url}t=${moveInputEl.value}`);
     const movieData = await res.json();
