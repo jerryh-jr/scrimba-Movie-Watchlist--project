@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
     <header class="navigation">
@@ -13,14 +14,14 @@
         <h1 class="navigation__title">Find Your film</h1>
         <a href="watchlist.html" class="navigation__link">My Watchlist</a>
       </div>
-      <form class="navigation__form">
+      <form class="navigation__form" id="movie-form">
         <input type="text" placeholder="Movie Title" class="navigation__input" id="movie-input-el">
-        <button class="navigation__button" id="search__btn--el">Search</button>
+        <button type="submit" class="navigation__button" id="search__btn--el">Search</button>
       </form>
     </header>
     <main class="movie-container">
         <div class="movie-container__item" id="movie-list"></div>
     </main>
-	<script href="index.js"></script>
+	<script src="index.js"></script>
   </body>
 </html>
