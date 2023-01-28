@@ -15,6 +15,13 @@ async function movieFetch(e) {
     const movieData = await res.json();
     console.log(movieData);
     listMovie(movieData);
+    // debugger;
+    const dataCalls = movieData.Search.map(async ({ imdbID }) => {
+        const response = await fetch(`${url}i=${imdbID}`);
+        const data = await response.json();
+        return data;
+    });
+    const movieDataAll = await Promise.all(dataCalls);
     debugger;
 }
 
@@ -41,10 +48,11 @@ function listMovie(movieData) {
             <p>Movie Rating: ${movieData.Search[i].Rated}</p>
             `
 
-            console.log(movieData.Title)
-            console.log(movieData.Actors)
-            console.log(movieData.Metascore)
-            console.log(movieData.Rated)}
+            // console.log(movieData.Title)
+            // console.log(movieData.Actors)
+            // console.log(movieData.Metascore)
+            // console.log(movieData.Rated)}
+        }
      }    
 };
 
