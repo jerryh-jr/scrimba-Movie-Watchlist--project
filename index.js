@@ -13,47 +13,37 @@ async function movieFetch(e) {
     const { url, movieInputEl } = elements;
     const res = await fetch(`${url}s=${movieInputEl.value}`);
     const movieData = await res.json();
-    console.log(movieData);
-    listMovie(movieData);
-    // debugger;
     const dataCalls = movieData.Search.map(async ({ imdbID }) => {
         const response = await fetch(`${url}i=${imdbID}`);
         const data = await response.json();
         return data;
     });
     const movieDataAll = await Promise.all(dataCalls);
+    console.log(movieDataAll)
+    listMovie(movieDataAll);
     debugger;
 }
 
-async function getMovieData(movie){
-    const { url, movieArray } = elements;
-    for(let i = 0; i < movieData.Search.length; i++){
-        const res = await fetch(`${url}t=${movie.Search[i]}`);
-        const movies = await res.json();
-        movieArray.push("movies");
-    }
-};
-
-console.log(elements.movieArray)
 function listMovie(movieData) {
-    if(movieData.Error) {
-        return elements.movieListEl.innerHTML = `<h2>Movie Not Found</h2>`;
-    } else {
-        for(let i = 0; i < movieData.Search.length; i++){
+        for(let i = 0; i < movieData.length; i++){
             elements.movieListEl.innerHTML += `
-            <img src="${movieData.Search[i].Poster}" alt="${movieData.Search[i].Title}" width="125" height="175">
-            <h3>${movieData.Search[i].Title}</h3>
-            <p>Actors: ${movieData.Search[i].Actors}</p>
-            <p>Meta Score: ${movieData.Search[i].Metascore}</p>
-            <p>Movie Rating: ${movieData.Search[i].Rated}</p>
+            <div class="movies__inner--container">
+                <div class="movies__container--header">
+                    <img src="${movieData[i].Poster}" alt="${movieData[i].Title}" width="125" height="175">
+                </div>
+                <div class="movies__container--info">
+                     <h3>${movieData[i].Title}</h3>
+                     <aside>*${movieData[i].imdbRating}</aside>
+                     <div class="movies__container--list">
+                        <p>${movieData[i].Runtime}</p>
+                        <p>${movieData[i].Genre}</p>
+                        <button class="movies__button">+ Watchlist</button>
+                    </div>
+                    <p>${movieData[i].Plot}</p>
+                </div>
+            </div>
             `
-
-            // console.log(movieData.Title)
-            // console.log(movieData.Actors)
-            // console.log(movieData.Metascore)
-            // console.log(movieData.Rated)}
         }
-     }    
 };
 
 window.addEventListener('load', () => {
