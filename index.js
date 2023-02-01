@@ -6,7 +6,7 @@ const elements = {
     movieInputEl: document.getElementById("movie-input-el"),
     movieFormEl: document.getElementById("movie-form"),
     movieListEl: document.getElementById("movie-list"),
-    url: `http://www.omdbapi.com/?apikey=45a43Ob9`,
+    url: 'https://www.omdbapi.com/?apikey=45a430b9&',
     movieArray: [],
 }
 
@@ -34,8 +34,8 @@ function prevPage(){
 async function movieFetch(e) {
     e.preventDefault();
     elements.movieListEl.innerHTML = '';
-    const { url, movieInputEl, apiKey } = elements;
-    const res = await fetch(`${url}${apiKey}s=${movieInputEl.value}&page=${pageNum}`);
+    const { url, movieInputEl } = elements;
+    const res = await fetch(`${url}s=${movieInputEl.value}&page=${pageNum}`);
     const movieData = await res.json();
     totalMovies = movieData.totalResults;
     console.log(totalMovies);

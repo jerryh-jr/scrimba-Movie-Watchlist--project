@@ -5,6 +5,7 @@ html {
   --main__text-color: #E5E7EB;
   --secoundary__text-color: #A5A5A5;
   --button__color: #415a77;
+  --input__color: #2E2E2F;
 }
 
 body {
@@ -24,6 +25,7 @@ p {
   width: 50%;
   height: 20vh;
   margin: 0 auto;
+  padding-bottom: 0.5rem;
   background-image: url("./icons/background-image.png");
   background-color: var(--main__background-color);
   color: var(--header-color);
@@ -51,18 +53,35 @@ p {
   color: var(--header-color)
 }
 
+.navigation__form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navigation__input {
+  padding: 0.5rem 0.75rem;
+  width: 50%;
+  background-color: var(--input__color);
+}
+
+.navigation__button {
+ width: 25%;
+}
 
 /* ----------------MOVIE LIST------------------ */
 .movies {
   height: 80vh;
   width: 50%;
   margin: 0 auto;
+  padding-top: 1rem;
   background-color: var(--main__background-color);
   color: var(--main__text-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .movies__container {
@@ -79,6 +98,9 @@ p {
 .movies__inner--container {
   display: flex;
   justify-content: space-evenly;
+  border-bottom: 1px solid var(--main__text-color);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .movies__container--header {
