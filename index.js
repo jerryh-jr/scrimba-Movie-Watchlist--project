@@ -66,14 +66,16 @@ function listMovie(movieData) {
                     <img src="${movieData[i].Poster}" alt="${movieData[i].Title}" class="movies__inner--image">
                 </div>
                 <div class="movies__container--info">
-                     <h3>${movieData[i].Title}</h3>
-                     <aside><image src="icons/star.png"></image>  ${movieData[i].imdbRating}</aside>
-                     <div class="movies__container--list">
+                    <div class="movies__title--container">
+                        <h3 class="movies__title">${movieData[i].Title}</h3>
+                        <h3><image src="icons/star.png"></image>  ${movieData[i].imdbRating}</h3>
+                    </div>
+                    <div class="movies__container--list">
                         <p>${movieData[i].Runtime}</p>
                         <p>${movieData[i].Genre}</p>
                         <button class="movies__button"><image src="./icons/plus-icon.png"></image>  Watchlist</button>
                     </div>
-                    <p class="movies__plot">${movieData[i].Plot}</p>
+                        <p class="movies__plot">${movieData[i].Plot}</p>
                 </div>
             </div>
             `

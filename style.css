@@ -118,10 +118,12 @@ input:-webkit-autofill:active{
 
 .movies__inner--container {
   display: flex;
+  justify-content: space-evenly;
   width: 100%;
   border-bottom: 1px solid var(--main__text-color);
   padding: 0.5rem;
   margin-top: 0.5rem;
+  color: var(--main__text-color);
 }
 
 .movies__inner--image {
@@ -146,12 +148,26 @@ input:-webkit-autofill:active{
 .movies__container--list {
   display: flex;
   justify-content: space-between;
+  width: 80%;
+}
+
+.movies__title--container {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.movies__title {
+ font-size: 2em;
+ font-weight: 400;
 }
 
 .movies__plot {
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-height: 3rem;
+  max-width: 60%;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .movies__button {
