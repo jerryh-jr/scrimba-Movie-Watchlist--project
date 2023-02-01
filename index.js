@@ -8,6 +8,7 @@ const elements = {
     movieListEl: document.getElementById("movie-list"),
     url: 'https://www.omdbapi.com/?apikey=45a430b9&',
     movieArray: [],
+    moviesPlotEl: document.getElementsByClassName("movies__plot"),
 }
 
 let pageNum = 1;
@@ -20,7 +21,7 @@ function nextPage(){
     } else {
         elements.nextBtnEl.disabled;
     }
-};
+}
 
 function prevPage(){
     if(pageNum > 1) {
@@ -29,7 +30,16 @@ function prevPage(){
     } else {
         elements.previousBtnEl.disabled;
     }
-};
+}
+
+function showText() {
+    const { moviesPlotEl } = elements;
+    if(moviesPlotEl.style.overflow === "hidden") {
+        moviesPlotEl.style.overflow === "visible"
+    } else {
+      moviesPlotEl.style.overflow === "hidden";
+    }
+}
 
 async function movieFetch(e) {
     e.preventDefault();
@@ -53,22 +63,22 @@ function listMovie(movieData) {
             elements.movieListEl.innerHTML += `
             <div class="movies__inner--container">
                 <div class="movies__container--header">
-                    <img src="${movieData[i].Poster}" alt="${movieData[i].Title}" width="125" height="175">
+                    <img src="${movieData[i].Poster}" alt="${movieData[i].Title}" class="movies__inner--image">
                 </div>
                 <div class="movies__container--info">
                      <h3>${movieData[i].Title}</h3>
-                     <aside>*${movieData[i].imdbRating}</aside>
+                     <aside><image src="icons/star.png"></image>  ${movieData[i].imdbRating}</aside>
                      <div class="movies__container--list">
                         <p>${movieData[i].Runtime}</p>
                         <p>${movieData[i].Genre}</p>
-                        <button class="movies__button"><image src="./icons/plus-icon.png"></image> Watchlist</button>
+                        <button class="movies__button"><image src="./icons/plus-icon.png"></image>  Watchlist</button>
                     </div>
-                    <p>${movieData[i].Plot}</p>
+                    <p class="movies__plot">${movieData[i].Plot}</p>
                 </div>
             </div>
             `
         }
-};
+}
 
 window.addEventListener('load', () => {
     elements.movieFormEl.addEventListener("submit", movieFetch);
@@ -76,3 +86,4 @@ window.addEventListener('load', () => {
 
 elements.nextBtnEl.addEventListener('click', nextPage);
 elements.previousBtnEl.addEventListener('click', prevPage);
+elements.moviesPlotEl.addEventListener('click', showText);
