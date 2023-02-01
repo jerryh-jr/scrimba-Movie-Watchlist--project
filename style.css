@@ -71,3 +71,25 @@ body {
 .movies__button:active {
 
 }
+
+.movies__navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+
+.movies__navigation--button {
+  padding: 0.25rem 0.5rem;
+  background-color: #415a77;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
+  color: aliceblue;
+  text-shadow: 1px 1px 3px black;
+}
+
+.button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

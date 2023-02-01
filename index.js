@@ -1,27 +1,51 @@
 const elements = {
     moveList: document.getElementById("movie-list"),
     searchBtnEl: document.getElementById("search__btn--el"),
+    previousBtnEl: document.getElementById("previous__btn--el"),
+    nextBtnEl: document.getElementById("next__btn--el"),
     movieInputEl: document.getElementById("movie-input-el"),
     movieFormEl: document.getElementById("movie-form"),
     movieListEl: document.getElementById("movie-list"),
     url: 'http://www.omdbapi.com/?apikey=45a430b9&',
     movieArray: [],
 }
+let pageNum = 1;
+let totalMovies = 0;
+
+function nextPage(){
+    if((pageNum * 10) < (totalMovies + 10)) {
+        pageNum++;
+        movieFetch(event);
+    } else {
+        elements.nextBtnEl.disabled;
+    }
+};
+
+function prevPage(){
+    if(pageNum > 1) {
+        pageNum--;
+        movieFetch(event);
+    } else {
+        elements.previousBtnEl.disabled;
+    }
+};
 
 async function movieFetch(e) {
     e.preventDefault();
+    elements.movieListEl.innerHTML = '';
     const { url, movieInputEl } = elements;
-    const res = await fetch(`${url}s=${movieInputEl.value}`);
+    const res = await fetch(`${url}s=${movieInputEl.value}&page=${pageNum}`);
     const movieData = await res.json();
+    debugger;
+    totalMovies = movieData.totalResults;
+    console.log(totalMovies);
     const dataCalls = movieData.Search.map(async ({ imdbID }) => {
         const response = await fetch(`${url}i=${imdbID}`);
         const data = await response.json();
         return data;
     });
     const movieDataAll = await Promise.all(dataCalls);
-    console.log(movieDataAll)
     listMovie(movieDataAll);
-    debugger;
 }
 
 function listMovie(movieData) {
@@ -49,3 +73,6 @@ function listMovie(movieData) {
 window.addEventListener('load', () => {
     elements.movieFormEl.addEventListener("submit", movieFetch);
 });
+
+elements.nextBtnEl.addEventListener('click', nextPage);
+elements.previousBtnEl.addEventListener('click', prevPage);
