@@ -6,8 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
+    <header class="navigation">
+      <div class="navigation__container">
+        <h1 class="navigation__title">Find Your film</h1>
+        <a href="index.html" class="navigation__link">Search for a Movie</a>
+      </div>
+      <form class="navigation__form" id="movie-form">
+        <input type="text" placeholder="Movie Title" class="navigation__input" id="movie-input-el">
+        <button type="submit" class="navigation__button" id="search__btn--el">Search</button>
+      </form>
+    </header>
+    <main class="movies">
+        <div class="movies__container" id="movie-list"></div>
+        <div  class="movies__navigation">
+          <button class="movies__navigation--button button" id="previous__btn--el">Previous</button>
+          <button class="movies__navigation--button button" id="next__btn--el">Next</button>
+        </div>
+    </main>
 	<script src="index.js"></script>
   </body>
 </html>
