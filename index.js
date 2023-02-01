@@ -6,9 +6,10 @@ const elements = {
     movieInputEl: document.getElementById("movie-input-el"),
     movieFormEl: document.getElementById("movie-form"),
     movieListEl: document.getElementById("movie-list"),
-    url: 'http://www.omdbapi.com/?apikey=45a430b9&',
+    url: 'http://www.omdbapi.com/?apikey=&',
     movieArray: [],
 }
+
 let pageNum = 1;
 let totalMovies = 0;
 
@@ -36,7 +37,6 @@ async function movieFetch(e) {
     const { url, movieInputEl } = elements;
     const res = await fetch(`${url}s=${movieInputEl.value}&page=${pageNum}`);
     const movieData = await res.json();
-    debugger;
     totalMovies = movieData.totalResults;
     console.log(totalMovies);
     const dataCalls = movieData.Search.map(async ({ imdbID }) => {
