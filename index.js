@@ -6,7 +6,7 @@ const elements = {
     movieInputEl: document.getElementById("movie-input-el"),
     movieFormEl: document.getElementById("movie-form"),
     movieListEl: document.getElementById("movie-list"),
-    url: `http://www.omdbapi.com/?apikey=`,
+    url: `http://www.omdbapi.com/?apikey=45a43Ob9`,
     movieArray: [],
 }
 
@@ -61,7 +61,7 @@ function listMovie(movieData) {
                      <div class="movies__container--list">
                         <p>${movieData[i].Runtime}</p>
                         <p>${movieData[i].Genre}</p>
-                        <button class="movies__button">+ Watchlist</button>
+                        <button class="movies__button"><image src="./icons/plus-icon.png"></image> Watchlist</button>
                     </div>
                     <p>${movieData[i].Plot}</p>
                 </div>
