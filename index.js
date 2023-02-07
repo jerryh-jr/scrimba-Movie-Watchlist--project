@@ -8,7 +8,8 @@ const elements = {
     movieListEl: document.getElementById("movie-list"),
     url: 'https://www.omdbapi.com/?apikey=45a430b9&',
     movieArray: [],
-    moviesPlotEl: document.getElementsByClassName("movies__plot"),
+    // moviesPlotEl: document.getElementsByClassName("movies__plot"),
+    
 }
 
 let pageNum = 1;
@@ -41,6 +42,7 @@ function showText() {
     }
 }
 
+
 async function movieFetch(e) {
     e.preventDefault();
     elements.movieListEl.innerHTML = '';
@@ -59,8 +61,10 @@ async function movieFetch(e) {
 }
 
 function listMovie(movieData) {
+    let htmlData = '';
+    let scriptData = '';
         for(let i = 0; i < movieData.length; i++){
-            elements.movieListEl.innerHTML += `
+             htmlData += `
             <div class="movies__inner--container">
                 <div class="movies__container--header">
                     <img src="${movieData[i].Poster}" alt="${movieData[i].Title}" class="movies__inner--image">
@@ -73,19 +77,35 @@ function listMovie(movieData) {
                     <div class="movies__container--list">
                         <p>${movieData[i].Runtime}</p>
                         <p>${movieData[i].Genre}</p>
-                        <button class="movies__button"><image src="./icons/plus-icon.png"></image>  Watchlist</button>
+                        <button class="movies__button" id="add-movie"><img src="./icons/plus-icon.png">  Watchlist</button>
                     </div>
                         <p class="movies__plot">${movieData[i].Plot}</p>
                 </div>
             </div>
             `
-        }
+        };
+
+        scriptData = `
+        <script>
+        
+        
+        </script>`
+        
+
+        elements.movieListEl.innerHTML = htmlData + scriptData;
 }
+
+
+function addToWatchlist() {
+    console.log('you clicked me')
+}
+
 
 window.addEventListener('load', () => {
     elements.movieFormEl.addEventListener("submit", movieFetch);
+    elements.nextBtnEl.addEventListener('click', nextPage);
+    elements.previousBtnEl.addEventListener('click', prevPage);
+    // elements.moviesPlotEl.addEventListener('click', showText);
+    document.querySelector('movies__button').addEventListener('click', addToWatchList);
 });
 
-elements.nextBtnEl.addEventListener('click', nextPage);
-elements.previousBtnEl.addEventListener('click', prevPage);
-elements.moviesPlotEl.addEventListener('click', showText);
